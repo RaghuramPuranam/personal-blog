@@ -4,23 +4,163 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <!-- TODO: Set the document title to the name of your application -->
-    <title>Lovable App</title>
-    <meta name="description" content="Lovable Generated Project" />
-    <meta name="author" content="Lovable" />
+    <title>Raghuram Puranam</title>
+    <meta name="description" content="Raghuram Puranam" />
+    <meta name="author" content="Raghuram Puranam" />
 
     <!-- TODO: Update og:title to match your application name -->
-    <meta property="og:title" content="Lovable App" />
-    <meta property="og:description" content="Lovable Generated Project" />
+    <meta property="og:title" content="Raghuram Puranam" />
+    <meta property="og:description" content="Raghuram Puranam" />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:site" content="@Lovable" />
-    <meta name="twitter:image" content="https://lovable.dev/opengraph-image-p98pqg.png" />
+    <style>
+      @keyframes codeBlast {
+        0% {
+          opacity: 1;
+          transform: translateY(0) scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: translateY(-100px) scale(0.8);
+        }
+      }
+
+      @keyframes terminal-glow {
+        0%, 100% {
+          text-shadow: 0 0 10px rgba(34, 197, 94, 0.5), 0 0 20px rgba(34, 197, 94, 0.3);
+        }
+        50% {
+          text-shadow: 0 0 20px rgba(34, 197, 94, 0.8), 0 0 30px rgba(34, 197, 94, 0.5);
+        }
+      }
+
+      @keyframes slideInCode {
+        0% {
+          opacity: 0;
+          transform: translateX(-20px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      #code-blast-container {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(135deg, rgba(0, 0, 0, 0.95) 0%, rgba(10, 10, 20, 0.95) 100%);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+        color: #22c55e;
+        pointer-events: none;
+      }
+
+      .code-content {
+        text-align: center;
+        position: relative;
+      }
+
+      .code-line {
+        font-size: clamp(14px, 3vw, 24px);
+        margin: 8px 0;
+        letter-spacing: 1px;
+        animation: slideInCode 0.6s ease-out forwards;
+        font-weight: 500;
+      }
+
+      .code-line:nth-child(1) { animation-delay: 0s; }
+      .code-line:nth-child(2) { animation-delay: 0.15s; }
+      .code-line:nth-child(3) { animation-delay: 0.3s; }
+      .code-line:nth-child(4) { animation-delay: 0.45s; }
+
+      .code-particle {
+        position: absolute;
+        animation: codeBlast 1.2s ease-in forwards;
+      }
+
+      .blast-text {
+        animation: terminal-glow 1.5s ease-in-out infinite;
+      }
+
+      @keyframes titlePulse {
+        0% {
+          transform: scale(0.8) translateY(30px);
+          opacity: 0;
+          text-shadow: 0 0 10px rgba(34, 197, 94, 0.3);
+        }
+        50% {
+          text-shadow: 0 0 30px rgba(34, 197, 94, 0.8), 0 0 60px rgba(34, 197, 94, 0.5);
+        }
+        100% {
+          transform: scale(1) translateY(0);
+          opacity: 1;
+          text-shadow: 0 0 20px rgba(34, 197, 94, 0.6), 0 0 40px rgba(34, 197, 94, 0.3);
+        }
+      }
+
+      .name-title {
+        font-size: clamp(32px, 8vw, 64px);
+        font-weight: 900;
+        letter-spacing: 2px;
+        animation: titlePulse 1s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+      }
+    </style>
+   
   </head>
 
   <body>
     <div id="root"></div>
+    <div id="code-blast-container">
+      <div class="code-content">
+                <div class="code-line name-title">Raghuram Puranam</div>
+
+        <div class="code-line">⚡ <span class="blast-text">Building Portfolio</span></div>
+        <div class="code-line">→ <span class="blast-text">Ready to Launch</span></div>
+      </div>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const container = document.getElementById('code-blast-container');
+          if (container) {
+            container.style.opacity = '0';
+            container.style.transition = 'opacity 0.6s ease-out';
+            container.style.pointerEvents = 'none';
+            setTimeout(() => {
+              container.style.display = 'none';
+            }, 700);
+          }
+        }, 1800);
+
+        // Create floating code particles
+        const particles = ['{ }', '< />', '( )', '[ ]', '$ ', '> '];
+        const container = document.getElementById('code-blast-container');
+        
+        for (let i = 0; i < 8; i++) {
+          setTimeout(() => {
+            const particle = document.createElement('div');
+            particle.className = 'code-particle';
+            particle.textContent = particles[Math.floor(Math.random() * particles.length)];
+            particle.style.left = Math.random() * 100 + '%';
+            particle.style.top = '50%';
+            particle.style.color = '#22c55e';
+            particle.style.opacity = Math.random() * 0.6 + 0.4;
+            particle.style.fontSize = Math.random() * 20 + 14 + 'px';
+            particle.style.fontFamily = 'Monaco, monospace';
+            container.appendChild(particle);
+            
+            setTimeout(() => particle.remove(), 1200);
+          }, i * 150);
+        }
+      });
+    </script>
   </body>
 </html>
